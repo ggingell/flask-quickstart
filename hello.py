@@ -20,11 +20,17 @@ def show_user_profile(username):
 def hello(name = None):
     return render_template('hello.html', name=name)
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('page_not_found.html'), 404
+@app.route('/is_debug/')
+def is_debugging():
+    if app.debug == True:
+        return 'is debugging!'
+    else:
+        return 'NOT DEBUGGING!'
+
+#@app.errorhandler(404)
+#def page_not_found(error):
+#   return render_template('page_not_found.html'), 404
 
 if __name__ == '__main__':
-
     app.config.from_pyfile('flask-quickstart-dev.cfg', silent=False)
     app.run()
