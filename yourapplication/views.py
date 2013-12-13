@@ -12,6 +12,13 @@ def index():
 def show_user_profile(username):
     return 'User %s' % username
 
+@app.route('/isdebug')
+def isdebug():
+    if app.debug == True:
+        return 'Debugging!'
+    else:
+        return 'NOT Debugging!'
+
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name = None):
